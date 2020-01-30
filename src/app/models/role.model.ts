@@ -1,4 +1,4 @@
 export enum RoleModel {
-  Sales = 'sales',
-  Admin = 'admin'
+  Sales = 'Sales',
+  Admin = 'Admin'
 }
