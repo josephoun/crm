@@ -1,1 +1,32 @@
-<p>sales works!</p>
+<panel>
+
+<div class="table-responsive">
+  <table class="table table-striped m-b-0">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Email Address</th>
+      <th width="10%"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let salesMan of sales">
+      <td >
+        {{salesMan.id}}
+      </td>
+      <td>
+        {{salesMan.name}}
+      </td>
+      <td >
+        {{salesMan.email}}
+      </td>
+      <td class="with-btn">
+        <a href="" class="btn btn-sm btn-primary width-60 m-r-2">More</a>
+      </td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>
+</panel>

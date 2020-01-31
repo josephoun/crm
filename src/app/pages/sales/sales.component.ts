@@ -7,9 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SalesComponent implements OnInit {
 
-  constructor() { }
+  public sales;
+
+  constructor() {
+  }
 
   ngOnInit() {
+    this.sales = [
+      {
+        id: 1,
+        name: 'Joseph',
+        email: 'josephoun@hotmail.com'
+      },
+      {
+        id: 2,
+        name: 'Eyas',
+        email: 'eyas@hotmail.com'
+      }
+    ];
   }
 
 }

@@ -1,1 +1,35 @@
-<p>leads works!</p>
+<panel>
+  <div class="table-responsive">
+    <table class="table table-striped m-b-0">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Email Address</th>
+        <th width="3%"></th>
+        <th width="3%"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let lead of leads">
+        <td >
+          {{lead.id}}
+        </td>
+        <td>
+          {{lead.name}}
+        </td>
+        <td >
+          {{lead.email}}
+        </td>
+        <td class="with-btn">
+          <a href="" class="btn btn-sm btn-primary width-60 m-r-2">Trader</a>
+        </td>
+        <td class="with-btn">
+          <a href="" class="btn btn-sm btn-primary width-60 m-r-2">Broker</a>
+        </td>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+</panel>

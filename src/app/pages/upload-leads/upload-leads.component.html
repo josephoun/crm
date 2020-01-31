@@ -1,12 +1,21 @@
 <div>
   <div class="d-inline-block">
-    <label for="txtFileUpload" class="btn btn-primary d-flex justify-content-center">Select CSV File</label>
 
-    <input type="file"
-           class="d-none"
-           name="fileUpload"
-           id="txtFileUpload"
-           (change)="fileChangeListener($event)"/>
+    <div>
+      <div>
+        <label for="txtFileUpload" class="btn btn-primary d-flex justify-content-center">
+          <i class="fas fa-lg fa-fw fa-upload"></i> <span>Upload CSV File</span>
+        </label>
+      </div>
+
+
+      <input type="file"
+             class="d-none"
+             name="fileUpload"
+             id="txtFileUpload"
+             (change)="fileChangeListener($event)"/>
+    </div>
+
   </div>
 
   <div *ngIf="noError">
@@ -15,6 +24,11 @@
   <div *ngIf="!noError">
     <div class="invalid-tooltip">{{tooltipMessage}}</div>
   </div>
+
+  <div (click)="downloadExampleFile()" class="btn btn-default">
+    <i class="fas fa-lg fa-fw fa-download"></i> <span>Download Example File</span>
+  </div>
+
 
   <panel title="Bordered Table" *ngIf="noError">
     <!-- begin table-responsive -->

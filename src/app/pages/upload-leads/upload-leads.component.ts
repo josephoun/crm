@@ -11,8 +11,29 @@ export class UploadLeadsComponent implements OnInit {
   public headersRow = [];
   public tooltipMessage = '';
   public noError = false;
+  public exampleFile = [];
 
   constructor() {
+    this.exampleFile = [
+      {
+        firstName: 'Anil',
+        lastName: 'Singh',
+        email: 'anil@hotmail.com',
+        phoneNumber: 234213
+      },
+      {
+        firstName: 'Sam',
+        lastName: 'gfah',
+        email: 'sam@hotmail.com',
+        phoneNumber: 3462363
+      },
+      {
+        firstName: 'kim',
+        lastName: 'asd',
+        email: 'kim@hotmail.com',
+        phoneNumber: 214314
+      }
+    ];
   }
 
   isCSVFile(file: any) {
@@ -81,9 +102,51 @@ export class UploadLeadsComponent implements OnInit {
     }
   }
 
+  ConvertToCSV(objArray, headerList) {
+    const array = typeof objArray !== 'object' ? JSON.parse(objArray) : objArray;
+    let str = '';
+    let row = '';
+
+    for (const index in headerList) {
+      row += headerList[index] + ',';
+    }
+    str += row + '\r\n';
+    for (let i = 0; i < array.length; i++) {
+      let line = '';
+      for (const index in headerList) {
+        const head = headerList[index];
+
+        line +=  array[i][head] + ',';
+      }
+      str += line + '\r\n';
+    }
+    return str;
+  }
+
+  downloadFile(data, filename= 'data') {
+    const csvData = this.ConvertToCSV(data, ['firstName', 'lastName', 'email', 'phoneNumber']);
+    const blob = new Blob(['\ufeff' + csvData], { type: 'text/csv;charset=utf-8;' });
+    const dwldLink = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+    const isSafariBrowser = navigator.userAgent.indexOf('Safari') !== -1 && navigator.userAgent.indexOf('Chrome') === -1;
+    if (isSafariBrowser) {  // if Safari open in new window to save file with random filename.
+      dwldLink.setAttribute('target', '_blank');
+    }
+    dwldLink.setAttribute('href', url);
+    dwldLink.setAttribute('download', filename + '.csv');
+    dwldLink.style.visibility = 'hidden';
+    document.body.appendChild(dwldLink);
+    dwldLink.click();
+    document.body.removeChild(dwldLink);
+  }
+
   fileReset() {
     this.csvRecords = [];
     this.headersRow = [];
+  }
+
+  downloadExampleFile() {
+    this.downloadFile(this.exampleFile, 'example');
   }
 
   ngOnInit() {
