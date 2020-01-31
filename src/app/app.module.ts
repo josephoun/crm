@@ -137,6 +137,9 @@ import {fakeBackendProvider} from './helpers/fake-backend';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {JwtInterceptor} from "./helpers/jwt.interceptor";
 import {ErrorInterceptor} from "./helpers/error.interceptor";
+import { SalesComponent } from './pages/sales/sales.component';
+import { LeadsComponent } from './pages/leads/leads.component';
+import { UploadLeadsComponent } from './pages/upload-leads/upload-leads.component';
 
 
 
@@ -208,7 +211,10 @@ import {ErrorInterceptor} from "./helpers/error.interceptor";
     ChartNgxPage,
     ChartD3Page,
     TableBasicPage,
-    TableDataPage
+    TableDataPage,
+    SalesComponent,
+    LeadsComponent,
+    UploadLeadsComponent
   ],
   imports: [
     HttpClientModule,

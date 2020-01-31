@@ -1,0 +1,42 @@
+<div>
+  <div class="d-inline-block">
+    <label for="txtFileUpload" class="btn btn-primary d-flex justify-content-center">Select CSV File</label>
+
+    <input type="file"
+           class="d-none"
+           name="fileUpload"
+           id="txtFileUpload"
+           (change)="fileChangeListener($event)"/>
+  </div>
+
+  <div *ngIf="noError">
+    <div class="valid-tooltip">{{tooltipMessage}}</div>
+  </div>
+  <div *ngIf="!noError">
+    <div class="invalid-tooltip">{{tooltipMessage}}</div>
+  </div>
+
+  <panel title="Bordered Table" *ngIf="noError">
+    <!-- begin table-responsive -->
+    <div class="table-responsive">
+      <table class="table table-bordered m-b-0">
+        <thead>
+        <tr>
+          <th *ngFor="let rowItem of headersRow">{{rowItem}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let record of csvRecords">
+          <td> {{record.firstName}} </td>
+          <td> {{record.lastName}}</td>
+          <td> {{record.email}}</td>
+          <td> {{record.phoneNumber}}</td>
+        </tr>
+
+        </tbody>
+      </table>
+    </div>
+    <!-- end table-responsive -->
+
+  </panel>
+</div>

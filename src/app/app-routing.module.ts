@@ -91,9 +91,22 @@ import { TableDataPage }            from './pages/tables/table-data/table-data';
 import { FormStuffPage }            from './pages/form-stuff/form-stuff';
 import {AuthGuard} from "./guards/auth.guard";
 import {RoleModel} from "./models/role.model";
+import {LeadsComponent} from "./pages/leads/leads.component";
+import {UploadLeadsComponent} from "./pages/upload-leads/upload-leads.component";
+import {SalesComponent} from "./pages/sales/sales.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard/v1', pathMatch: 'full' , canActivate: [AuthGuard]},
+
+  { path: 'leads', component: LeadsComponent, data: { title: 'Leads'}},
+
+  { path: 'UploadLeads', component: UploadLeadsComponent, data: { title: 'Upload Leads'}},
+
+  { path: 'sales', component: SalesComponent, data: { title: 'Sales'}},
+
+
+
+
 
   { path: 'dashboard/v1', component: DashboardV1Page, data: { title: 'Dashboard V1'} },
   { path: 'dashboard/v2', component: DashboardV2Page, data: { title: 'Dashboard V2'} },
