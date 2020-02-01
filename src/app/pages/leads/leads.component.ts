@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {LeadsService} from '../../services/leads.service';
 
 @Component({
   selector: 'app-leads',
@@ -9,21 +10,11 @@ export class LeadsComponent implements OnInit {
 
   public leads;
 
-  constructor() { }
-
-  ngOnInit() {
-    this.leads = [
-      {
-        id: 1,
-        name: 'Joseph',
-        email: 'josephoun@hotmail.com'
-      },
-      {
-        id: 2,
-        name: 'Eyas',
-        email: 'eyas@hotmail.com'
-      }
-    ];
+  constructor(private leadsService: LeadsService) {
+    this.leads = this.leadsService.leads;
+    this.leadsService.getLeads();
   }
+
+  ngOnInit() {}
 
 }

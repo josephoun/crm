@@ -133,7 +133,6 @@ import {TableDataPage} from './pages/tables/table-data/table-data';
 
 // Form
 import {FormStuffPage} from './pages/form-stuff/form-stuff';
-import {fakeBackendProvider} from './helpers/fake-backend';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {JwtInterceptor} from "./helpers/jwt.interceptor";
 import {ErrorInterceptor} from "./helpers/error.interceptor";
@@ -252,8 +251,7 @@ import { UploadLeadsComponent } from './pages/upload-leads/upload-leads.componen
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG,
     },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    fakeBackendProvider
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

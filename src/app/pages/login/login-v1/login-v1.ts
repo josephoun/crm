@@ -64,6 +64,7 @@ export class LoginV1Page implements OnDestroy, OnInit {
       .pipe(first())
       .subscribe(
         data => {
+          debugger;
           this.router.navigate([this.returnUrl]);
         },
         error => {

@@ -83,7 +83,7 @@ export class UploadLeadsComponent implements OnInit {
 
       reader.onload = (data) => {
         const csvData = reader.result;
-        const csvRecordsArray = csvData.split(/\r\n|\n/);
+        const csvRecordsArray = csvData['split'](/\r\n|\n/);
         this.headersRow = this.getHeaderArray(csvRecordsArray);
         this.csvRecords =
           this.getDataRecordsArrayFromCSVFile(csvRecordsArray,
